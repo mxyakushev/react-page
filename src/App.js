@@ -1,25 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from "./components/Header";
+import data from './data';
+import Item from './components/Item';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+    const dataArr = data.map(el => {
+        return (<Item
+            title={el.title}
+            location={el.location}
+            googleMapsUrl={el.googleMapsUrl}
+            startDate={el.startDate}
+            endDate={el.endDate}
+            description={el.description}
+            imageUrl={el.imageUrl}
+        />)
+    })
+
+    return (
+        <div className='app'>
+            <Header />
+            <div className="container">
+                {dataArr}
+            </div>
+        </div>
+    )
 }
-
-export default App;
